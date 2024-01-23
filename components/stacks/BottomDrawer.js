@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Image, Modal, View, Text, Button, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import { Dimensions } from "react-native";
 import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicatorWrapper, ActionsheetDragIndicator,ActionsheetItem, ActionsheetIcon, ActionsheetItemText } from '@gluestack-ui/themed';
-import { Icon, TrashIcon, ArrowDownIcon } from "@gluestack-ui/themed"
+import { Icon, TrashIcon } from "@gluestack-ui/themed"
 
 
 const BottomDrawer = ({handleClose, showActionsheet}) => {

@@ -1,7 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import IndexScreen from "../screens/IndexScreen"
-import DetailsScreen from "../screens/DetailsScreen"
 
 const Stack = createNativeStackNavigator()
 
@@ -22,7 +21,6 @@ const AppStack = () => {
                     }
                 }}
             />
-            <Stack.Screen name="Details" component={DetailsScreen}/>
         </Stack.Navigator>
     </NavigationContainer>
   )
