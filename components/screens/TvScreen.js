@@ -8,7 +8,7 @@ import BottomDrawer from  '../stacks/BottomDrawer'
 import ListCard from "../listCards/ListCard";
 import FilterContainer from "../containers/FilterContainer";
 
-const MoviesScreen = ({route}) => {
+const TvScreen = ({route}) => {
 
     const [showActionsheet, setShowActionsheet] = React.useState(false)
     const [selectedFilter, setSelectedFilter] = useState(""); // Add state to store selected filter
@@ -20,7 +20,7 @@ const MoviesScreen = ({route}) => {
       fetchData(filters[0]);
   }, []);
 
-  const filters = ["popular", "now_playing", "top_rated", "upcoming"]
+  const filters = ["airing_today", "on_the_air", "popular", "top_rated"]
 
   const handleFilterSelection = (filter) => {
     setSelectedFilter(filter);
@@ -32,8 +32,9 @@ const MoviesScreen = ({route}) => {
 
   const fetchData = async (filter) => {
       try {
-          const movies = await fetchMovies(filter); // Call fetchMovies function with the selected filter
-          setData(movies);
+        const shows = await fetchTVShows(filter); // Call fetchMovies function with the selected filter
+        setData(shows);
+        console.log(shows)
       } catch (error) {
           console.error('Error fetching data:', error);
       }
@@ -91,4 +92,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default MoviesScreen
+export default TvScreen

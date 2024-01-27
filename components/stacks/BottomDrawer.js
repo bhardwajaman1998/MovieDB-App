@@ -4,26 +4,29 @@ import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIn
 import { Icon, TrashIcon } from "@gluestack-ui/themed"
 
 
-const BottomDrawer = ({handleClose, showActionsheet}) => {
+const BottomDrawer = ({handleClose, showActionsheet, filters, onSelectFilter}) => {
 
-    const windowHeight = Dimensions.get('window').height;
+    const handleClosing = (filter) => {
+        handleClose()
+        onSelectFilter(filter)
+    }
+
     return (
         <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
             <ActionsheetBackdrop />
             <ActionsheetContent>
-
-            <ActionsheetDragIndicatorWrapper>
-                <ActionsheetDragIndicator />
-            </ActionsheetDragIndicatorWrapper>
-
-            <ActionsheetItem onPress={handleClose}>
-                <ActionsheetIcon>
-                <Icon as={TrashIcon} />
-                </ActionsheetIcon>
-                <ActionsheetItemText>Delete</ActionsheetItemText>
-            </ActionsheetItem>
+                <ActionsheetDragIndicatorWrapper>
+                    <ActionsheetDragIndicator />
+                </ActionsheetDragIndicatorWrapper>
+                {filters.map((filter, index) => (
+                    <ActionsheetItem key={index} onPress={() => handleClosing(filter)}>
+                        <ActionsheetIcon>
+                        <Icon as={TrashIcon} />
+                        </ActionsheetIcon>
+                        <ActionsheetItemText>{filter}</ActionsheetItemText>
+                    </ActionsheetItem>
+                ))}
             </ActionsheetContent>
-
         </Actionsheet>
     )
 } 

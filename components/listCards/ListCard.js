@@ -13,9 +13,13 @@ const ListCard = ({item}) => {
                   }}
                 />
                 <VStack justifyContent="space-between">
-                    <Text style={styles.nameText}>{item.name}</Text>
+                    {item.title ? (
+                        <Text style={styles.nameText}>{item.title}</Text>
+                    ) : (
+                        <Text style={styles.nameText}>{item.name}</Text>
+                    )}
                     <Text>Popularity: {item.popularity}</Text>
-                    <Text>Realease date: {item.date}</Text>
+                    <Text>Realease date: {item.realease_date}</Text>
                     <TouchableOpacity
                         style={styles.moreDetailsbutton}
                         underlayColor='blue'>
