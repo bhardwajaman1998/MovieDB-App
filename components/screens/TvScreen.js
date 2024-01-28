@@ -45,7 +45,7 @@ const TvScreen = ({route}) => {
             <View style={styles.filterContainer}>
                 <FilterContainer handleClose={handleClose} showSearchButton={false} selectedFilter={selectedFilter}/>
                 </View>
-                <BottomDrawer handleClose={handleClose} showActionsheet={showActionsheet} filters={filters} onSelectFilter={handleFilterSelection}/>
+                <BottomDrawer handleClose={handleClose} showActionsheet={showActionsheet} filters={filters} onSelectFilter={handleFilterSelection} selectedFilter={selectedFilter}/>
             <View style={styles.listContainer}>
                 <View>
                     <FlatList

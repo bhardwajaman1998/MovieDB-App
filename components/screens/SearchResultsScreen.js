@@ -29,7 +29,6 @@ const SearchResultsScreen = ({navigation}) => {
         setShowActionsheet(false);
     };
     
-
     const filters = ["movie", "multi", "tv"]
 
     const [data, setData] = useState([]);
@@ -75,21 +74,25 @@ const SearchResultsScreen = ({navigation}) => {
                                 <MaterialIcons 
                                     name="search" 
                                 />
-                            } 
+                            }
                         />
                     }
                     onChange={handleQueryChange}
                 />
                 <Heading fontSize="md" alignSelf={'left'}>Chose Search Type</Heading>
                 <FilterContainer handleClose={handleClose} showSearchButton={true} selectedFilter={selectedFilter} handleSearchButton={handleSearch}/>
-                <BottomDrawer handleClose={handleClose} showActionsheet={showActionsheet} filters={filters} onSelectFilter={handleFilterSelection}/>
+                <BottomDrawer handleClose={handleClose} showActionsheet={showActionsheet} filters={filters} onSelectFilter={handleFilterSelection} selectedFilter={selectedFilter}/>
                 <Text fontSize="12">Please select a search type*</Text>
             </VStack>
             <View style={styles.listContainer}>
-                <FlatList
+                { data.length ? (
+                    <FlatList
                     data={data}
                     renderItem={({ item }) => <ListCard item={item}/>}
                 />
+                ) : (
+                    <Text size="2xl" fontWeight="bold" textAlign="center" marginRight={30}>Please initiate a search</Text>
+                )}
             </View>
         </NativeBaseProvider>
     )

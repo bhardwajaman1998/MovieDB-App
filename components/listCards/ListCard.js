@@ -1,15 +1,16 @@
 import { Box, Image, Text, HStack, VStack } from "@gluestack-ui/themed"
 import {StyleSheet, TouchableOpacity } from "react-native";
+import { getImageUrl } from "../services/api";
 
 const ListCard = ({item}) => {
     return (
-        <Box  py="$2">
+        <Box  py="$2" flexWrap="nowrap">
             <HStack width={'auto'} gap={12}>
                 <Image
                   size="xl"
                   borderRadius="$none"
                   source={{
-                    uri: item.avatarUrl,
+                    uri: getImageUrl(item.backdrop_path) ,
                   }}
                 />
                 <VStack justifyContent="space-between">
@@ -19,7 +20,11 @@ const ListCard = ({item}) => {
                         <Text style={styles.nameText}>{item.name}</Text>
                     )}
                     <Text>Popularity: {item.popularity}</Text>
-                    <Text>Realease date: {item.realease_date}</Text>
+                    {item.release_date ? (
+                        <Text>Realease date: {item.release_date}</Text>
+                    ) : (
+                        <Text>Realease date: {item.first_air_date}</Text>
+                    )}
                     <TouchableOpacity
                         style={styles.moreDetailsbutton}
                         underlayColor='blue'>
@@ -33,16 +38,17 @@ const ListCard = ({item}) => {
 
 const styles = StyleSheet.create({
     moreDetailsbutton:{
-        backgroundColor:'blue',
+        backgroundColor:'#9d92f0',
         borderRadius:4,
-        width: "100%",
+        width: 200,
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
       },
     nameText : {
         fontSize: '18',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        width: 200
     },
     detailsText:{
         color:'#fff',

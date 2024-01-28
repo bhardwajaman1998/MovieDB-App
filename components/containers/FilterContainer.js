@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { HStack, Text, Button, ButtonText, ButtonIcon, SearchIcon, ArrowDownIcon } from "@gluestack-ui/themed"
+import { HStack, Text, Button, ButtonText, ButtonIcon, SearchIcon, ChevronDownIcon } from "@gluestack-ui/themed"
 
 const FilterContainer = ({handleClose, showSearchButton, selectedFilter, handleSearchButton}) => {
 
@@ -13,7 +13,7 @@ const FilterContainer = ({handleClose, showSearchButton, selectedFilter, handleS
             <TouchableOpacity onPress={handleClose} style={styles.button}>
                 <HStack gap={30} style={styles.hStack}>
                     <Text>{selectedFilter}</Text>
-                    <ButtonIcon as={ArrowDownIcon} />
+                    <ButtonIcon as={ChevronDownIcon} />
                 </HStack>
             </TouchableOpacity>
             {showSearchButton ? (

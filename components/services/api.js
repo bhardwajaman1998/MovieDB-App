@@ -28,7 +28,6 @@ export const searchMedia = async (query, type) => {
   try {
     const response = await fetch(`${BASE_URL}/search/${type}?api_key=${API_KEY}&query=${query}`);
     const data = await response.json();
-    console.log(data)
     return data.results;
   } catch (error) {
     console.error('Error searching media:', error);

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Dimensions } from "react-native";
 import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicatorWrapper, ActionsheetDragIndicator,ActionsheetItem, ActionsheetIcon, ActionsheetItemText } from '@gluestack-ui/themed';
-import { Icon, TrashIcon } from "@gluestack-ui/themed"
+import { Icon, CheckIcon } from "@gluestack-ui/themed"
 
 
-const BottomDrawer = ({handleClose, showActionsheet, filters, onSelectFilter}) => {
+const BottomDrawer = ({handleClose, showActionsheet, filters, onSelectFilter, selectedFilter}) => {
 
     const handleClosing = (filter) => {
         handleClose()
@@ -19,11 +19,21 @@ const BottomDrawer = ({handleClose, showActionsheet, filters, onSelectFilter}) =
                     <ActionsheetDragIndicator />
                 </ActionsheetDragIndicatorWrapper>
                 {filters.map((filter, index) => (
-                    <ActionsheetItem key={index} onPress={() => handleClosing(filter)}>
-                        <ActionsheetIcon>
-                        <Icon as={TrashIcon} />
-                        </ActionsheetIcon>
-                        <ActionsheetItemText>{filter}</ActionsheetItemText>
+                    <ActionsheetItem
+                        key={index} 
+                        onPress={() => handleClosing(filter)} 
+                        style={{
+                            backgroundColor: filter === selectedFilter ? '#ad6984' : 'transparent',
+                        }}
+                        >
+                            <ActionsheetItemText 
+                                style={{
+                                    color: filter === selectedFilter ? '#fff' : '#000'
+                                }}
+                                >
+                                {filter}
+                            </ActionsheetItemText>
+                            {filter === selectedFilter && <Icon color={'#fff'} as={CheckIcon} />}
                     </ActionsheetItem>
                 ))}
             </ActionsheetContent>
