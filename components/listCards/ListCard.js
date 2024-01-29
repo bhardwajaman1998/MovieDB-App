@@ -1,8 +1,15 @@
 import { Box, Image, Text, HStack, VStack } from "@gluestack-ui/themed"
 import {StyleSheet, TouchableOpacity } from "react-native";
 import { getImageUrl } from "../services/api";
+import { useNavigation } from '@react-navigation/native';
 
-const ListCard = ({item}) => {
+const ListCard = ({item, type}) => {
+
+    const navigation = useNavigation(); // Get navigation object
+
+    const handleNavigation = () => {
+        navigation.navigate('Media', { itemId: item.id, type: type});
+    }
     return (
         <Box  py="$2" flexWrap="nowrap">
             <HStack width={'auto'} gap={12}>
@@ -27,7 +34,9 @@ const ListCard = ({item}) => {
                     )}
                     <TouchableOpacity
                         style={styles.moreDetailsbutton}
-                        underlayColor='blue'>
+                        underlayColor='blue'
+                        onPress={handleNavigation}
+                        >
                         <Text style={styles.detailsText}>More Details</Text>
                     </TouchableOpacity>
                 </VStack>

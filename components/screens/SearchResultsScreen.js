@@ -7,7 +7,7 @@ import { StyleSheet } from "react-native";
 
 import BottomDrawer from  '../stacks/BottomDrawer'
 import FilterContainer from "../containers/FilterContainer";
-import ListCard from "../listCards/ListCard";
+import ListLayout from "../layout/ListLayout";
 import { searchMedia } from "../services/api";
 
 
@@ -45,7 +45,6 @@ const SearchResultsScreen = ({navigation}) => {
         try {
           const shows = await searchMedia(searchQuery, filter); // Call fetchMovies function with the selected filter
           setData(shows);
-          console.log(shows)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -86,10 +85,7 @@ const SearchResultsScreen = ({navigation}) => {
             </VStack>
             <View style={styles.listContainer}>
                 { data.length ? (
-                    <FlatList
-                    data={data}
-                    renderItem={({ item }) => <ListCard item={item}/>}
-                />
+                    <ListLayout data={data} type={selectedFilter}/>
                 ) : (
                     <Text size="2xl" fontWeight="bold" textAlign="center" marginRight={30}>Please initiate a search</Text>
                 )}

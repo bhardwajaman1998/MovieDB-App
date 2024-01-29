@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import IndexScreen from "../screens/IndexScreen"
-
+import MediaScreen from "../screens/MediaScreen"
 const Stack = createNativeStackNavigator()
 
 const AppStack = () => {
@@ -21,6 +21,7 @@ const AppStack = () => {
                     }
                 }}
             />
+            <Stack.Screen name="Media" component={MediaScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   )
