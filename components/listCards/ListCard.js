@@ -8,7 +8,7 @@ const ListCard = ({item, type}) => {
     const navigation = useNavigation(); // Get navigation object
 
     const handleNavigation = () => {
-        navigation.navigate('Media', { itemId: item.id, type: type});
+        navigation.navigate('Media', { itemId: item.id, type: (item.media_type ? (item.media_type) : type)});
     }
     return (
         <Box  py="$2" flexWrap="nowrap">
@@ -17,7 +17,7 @@ const ListCard = ({item, type}) => {
                   size="xl"
                   borderRadius="$none"
                   source={{
-                    uri: getImageUrl(item.backdrop_path) ,
+                    uri: (item.backdrop_path ? getImageUrl(item.backdrop_path) : getImageUrl(item.poster_path)) ,
                   }}
                 />
                 <VStack justifyContent="space-between">

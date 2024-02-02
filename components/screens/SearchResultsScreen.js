@@ -97,7 +97,8 @@ const SearchResultsScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     listContainer: {
         width: '100%',
-        margin: 20
+        margin: 20,
+        height: '65%'
     }
   });
 
